@@ -109,11 +109,10 @@ class App extends Component {
         let boldStart = textValue.slice(startPos - 2, startPos);
         let boldStop = textValue.slice(stopPos, stopPos + 2);
         let editedValue;
-        if(boldStart == "**" && boldStop == "**"){
+        if(boldStart === "**" && boldStop === "**"){
           editedValue = textValue.slice(0, startPos - 2) 
           + textValue.slice(startPos, stopPos) 
           + textValue.slice(stopPos + 2, textValue.length);
-          console.log(editedValue);
           this.saveEditor(editedValue);
         }
         else{
@@ -121,6 +120,33 @@ class App extends Component {
           + "**" 
           + selectedText 
           + "**" 
+          + textValue.slice(stopPos, textValue.length);
+          this.saveEditor(editedValue);
+        }
+        this.setState({
+          startPos: "",
+          stopPos: "",
+        });
+      }
+      if(buttonValue === "italic"){
+        // Check siblings
+        let italicStart = textValue.slice(startPos - 1, startPos);
+        let italicStop = textValue.slice(stopPos, stopPos + 1);
+        let italicBoldStart = textValue.slice(startPos - 3, startPos);
+        let italicBoldStop = textValue.slice(stopPos, stopPos + 3);
+        let editedValue;
+        if(((italicStart === "*" && italicStop === "*") && (textValue[startPos-2] != "*" && textValue[stopPos-2] != "*"))
+          || (italicBoldStart === "***" && italicBoldStop === "***")){
+          editedValue = textValue.slice(0, startPos - 1) 
+          + textValue.slice(startPos, stopPos) 
+          + textValue.slice(stopPos + 1, textValue.length);
+          this.saveEditor(editedValue);
+        }
+        else{
+          editedValue = textValue.slice(0, startPos) 
+          + "*" 
+          + selectedText 
+          + "*" 
           + textValue.slice(stopPos, textValue.length);
           this.saveEditor(editedValue);
         }
