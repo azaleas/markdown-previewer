@@ -155,6 +155,62 @@ class App extends Component {
           stopPos: "",
         });
       }
+      if(buttonValue === "olist"){
+        // Check olist
+        let olistStart = textValue.slice(startPos - 3, startPos);
+        let numStart = textValue.slice(startPos - 4, startPos);
+        let editedValue;
+        if(olistStart === "\n- "){
+            editedValue = textValue.slice(0, startPos - 3) 
+          + selectedText 
+          + textValue.slice(stopPos, textValue.length);        
+        }
+        else if(numStart === "\n0. "){
+            editedValue = textValue.slice(0, startPos - 4) 
+          + "\n- " 
+          + selectedText 
+          + textValue.slice(stopPos, textValue.length);        
+        }
+        else{
+            editedValue = textValue.slice(0, startPos) 
+          + "\n- " 
+          + selectedText 
+          + textValue.slice(stopPos, textValue.length);
+        }
+        this.saveEditor(editedValue);
+        this.setState({
+          startPos: "",
+          stopPos: "",
+        });
+      }
+      if(buttonValue === "nlist"){
+        // Check olist
+        let numStart = textValue.slice(startPos - 4, startPos);
+        let olistStart = textValue.slice(startPos - 3, startPos);
+        let editedValue;
+        if(numStart === "\n0. "){
+            editedValue = textValue.slice(0, startPos - 4) 
+          + selectedText 
+          + textValue.slice(stopPos, textValue.length);        
+        }
+        else if(olistStart === "\n- "){
+            editedValue = textValue.slice(0, startPos - 3) 
+          + "\n0. " 
+          + selectedText 
+          + textValue.slice(stopPos, textValue.length);        
+        }
+        else{
+            editedValue = textValue.slice(0, startPos) 
+          + "\n0. " 
+          + selectedText 
+          + textValue.slice(stopPos, textValue.length);
+        }
+        this.saveEditor(editedValue);
+        this.setState({
+          startPos: "",
+          stopPos: "",
+        });
+      }
     }
   }
 
