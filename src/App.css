@@ -20,7 +20,7 @@
   font-size: 1.5em;
   text-transform: uppercase;
 }
-textarea,
+.MarkdownForm,
 .MarkdownPreview {
   width: 90%;
   height: 80vh;
@@ -32,6 +32,53 @@ textarea,
 .MarkdownPreview {
   -ms-overflow-y: auto;
       overflow-y: auto;
+}
+
+.MarkdownForm {
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+      justify-content: space-between;
+}
+
+textarea {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.formButtons {
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  -webkit-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+  margin: 0.25em;
+  padding: 0.5em;
+  background-color: #fff;
+  border: 1px solid #000;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  color: #000;
+  font-weight: bold;
+  -webkit-transition: all 0.2s linear;
+     -moz-transition: all 0.2s linear;
+      -ms-transition: all 0.2s linear;
+       -o-transition: all 0.2s linear;
+          transition: all 0.2s linear;
+  outline: none;
+}
+
+button:hover {
+  color: #fff;
+  background-color: #000;
+  border-color: #000;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1023px){
