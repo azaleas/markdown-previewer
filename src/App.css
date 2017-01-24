@@ -1,0 +1,43 @@
+.App {
+  display: flex;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+      justify-content: space-around;
+  align-items: center;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.MarkdownPreviewWrapper,
+.MarkdownFormWrapper {
+  align-self: stretch;
+  width: 100%;
+}
+.title {
+  color: #6495ed;
+  text-align: center;
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+textarea,
+.MarkdownPreview {
+  width: 90%;
+  height: 80vh;
+  border: 2px solid #eee8cd;
+  margin: 1em auto;
+  display: block;
+  padding: 0.5em;
+}
+.MarkdownPreview {
+  -ms-overflow-y: auto;
+      overflow-y: auto;
+}
+
+@media only screen and (max-width: 1023px){
+  .App {
+    -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  }
+}
